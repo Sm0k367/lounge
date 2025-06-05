@@ -121,3 +121,30 @@
 - Social and shared virtual experiences
 - AI-generated custom content
 - Therapeutic and wellness applications
+
+## Platform API Endpoints
+
+### `/api/personalize` (GET)
+
+Provides personalized content recommendations.
+
+**Current Behavior:**
+- Returns a static JSON object with placeholder personalized data including recommended videos, experiences, and performer profiles.
+
+**Future Enhancements:**
+- Integrate with user profiles and machine learning models to deliver dynamic, truly personalized content.
+- Implement authentication and user tracking.
+- Expand recommendation types and data points.
+
+**Example Response:**
+```json
+{
+  "userId": "guest",
+  "recommendations": [
+    { "type": "video", "id": "vid001", "title": "Recommended Video 1" },
+    { "type": "experience", "id": "exp002", "title": "Interactive AR Teaser" },
+    { "type": "performer_profile", "id": "perf003", "name": "AI Virtual Star Nova" }
+  ],
+  "message": "Content personalized for you."
+}
+```
