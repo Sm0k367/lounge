@@ -148,3 +148,29 @@ Provides personalized content recommendations.
   "message": "Content personalized for you."
 }
 ```
+
+## Deployment to Vercel
+
+The `platform-app` (the Next.js application located in `next_gen_ai_lounge/platform-app/`) is designed to be easily deployable on Vercel.
+
+**Prerequisites:**
+- A Vercel account.
+- Git repository connected to Vercel.
+
+**Standard Deployment Steps:**
+
+1.  **Push to Git:** Ensure the latest version of the `platform-app` is pushed to your Git provider (e.g., GitHub, GitLab, Bitbucket).
+2.  **Import Project on Vercel:**
+    - Log in to your Vercel account.
+    - Click "Add New..." -> "Project".
+    - Import the Git repository containing this project.
+3.  **Configure Project:**
+    - **Root Directory:** When prompted, Vercel might autodetect Next.js. If you need to specify the root directory, ensure you set it to `next_gen_ai_lounge/platform-app` (or just `platform-app` if Vercel is already scoped to `next_gen_ai_lounge` depending on how you add the monorepo). *Correction:* Vercel typically requires the root of the Git repository, and then you specify the package directory. So, the root directory is the repository root, and Vercel's Next.js framework detection should handle the `platform-app` subdirectory correctly if it's the only Next.js app or if specified. For monorepos, Vercel allows selecting the directory containing the Next.js app (`platform-app` in this case) during project setup.
+    - **Framework Preset:** Vercel should automatically detect Next.js.
+    - **Build and Output Settings:** Typically, default Next.js settings are sufficient. Vercel uses the `build` script from `package.json` (i.e., `next build`).
+4.  **Deploy:** Click the "Deploy" button.
+
+Vercel will then build and deploy your application. API routes (like `/api/personalize`) and pages (like `/show-personalized-content`) will become live.
+
+**Note on Monorepos:**
+If your repository contains multiple projects (a monorepo structure), Vercel's import process allows you to specify the directory that contains the application you want to deploy (in this case, `platform-app`). Ensure your build command and output directory settings in Vercel are configured relative to this application directory if defaults are not automatically correct. `create-next-app` sets up the `package.json` within `platform-app` so that `npm run build` works correctly when Vercel uses `platform-app` as the root for the build.
