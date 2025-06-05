@@ -30,7 +30,13 @@ export default function ShowPersonalizedContentPage() {
         const result = await response.json();
         setData(result);
       } catch (e: any) {
-        setError(e.message);
+        // Check if the error is likely due to a network issue (API not found)
+        // or a specific HTTP error status that might indicate an unavailable API in static export
+        if (e.message.toLowerCase().includes('failed to fetch') || (e.message.includes('HTTP error') && (e.message.includes('404') || e.message.includes('500')))) {
+          setError('Dynamic content could not be loaded. This site may be a static version where API routes are not available, or the API is temporarily down.');
+        } else {
+          setError(e.message);
+        }
       } finally {
         setIsLoading(false);
       }
@@ -44,11 +50,11 @@ export default function ShowPersonalizedContentPage() {
   }
 
   if (error) {
-    return <div style={{ padding: '20px', color: 'red' }}>Error fetching data: {error}</div>;
+    return <div style={{ padding: '20px', color: 'red' }}>Error: {error}</div>;
   }
 
   if (!data) {
-    return <div style={{ padding: '20px' }}>No data available.</div>;
+    return <div style={{ padding: '20px' }}>No personalized data available. This might occur if the content server is unreachable or if this is a static export.</div>;
   }
 
   return (
