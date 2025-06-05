@@ -1,0 +1,14 @@
+{
+  "name": "next-gen-ai-lounge-monorepo-root",
+  "version": "1.0.0",
+  "description": "Root for the Next-Gen AI Lounge project, providing helper scripts for sub-projects.",
+  "private": true,
+  "scripts": {
+    "dev-platform": "cd platform-app && npm run dev",
+    "build-platform": "cd platform-app && npm run build",
+    "start-platform": "cd platform-app && npm run start",
+    "lint-platform": "cd platform-app && npm run lint"
+  },
+  "author": "",
+  "license": "ISC"
+}

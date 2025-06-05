@@ -149,6 +149,21 @@ Provides personalized content recommendations.
 }
 ```
 
+## Running the Platform Application (`platform-app`)
+
+The main Next.js application is located in the `platform-app/` directory. To simplify development when your terminal is at the project root (`next_gen_ai_lounge/`), a `package.json` file is provided in the root directory with helper scripts.
+
+You can run the following commands from the project root:
+
+-   **`npm run dev-platform`**: Starts the Next.js development server for `platform-app`. (Equivalent to `cd platform-app && npm run dev`)
+-   **`npm run build-platform`**: Builds the `platform-app` for production. (Equivalent to `cd platform-app && npm run build`)
+-   **`npm run start-platform`**: Starts the production server for a built `platform-app`. (Equivalent to `cd platform-app && npm run start`)
+-   **`npm run lint-platform`**: Lints the `platform-app`. (Equivalent to `cd platform-app && npm run lint`)
+
+**Alternatively, you can navigate directly into the `platform-app` directory and run the standard npm scripts:**
+1.  `cd platform-app`
+2.  `npm run dev` (or `build`, `start`, `lint`)
+
 ## Deployment to Vercel
 
 The `platform-app` (the Next.js application located in `next_gen_ai_lounge/platform-app/`) is designed to be easily deployable on Vercel.
